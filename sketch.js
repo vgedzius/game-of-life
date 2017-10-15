@@ -11,7 +11,7 @@ var runBtn;
 var running = false;
 
 function setup() {
-  frameRate(2);
+  frameRate(6);
   if (!running) {
     noLoop();
   }
