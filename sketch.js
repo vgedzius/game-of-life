@@ -1,8 +1,8 @@
 var canvas;
 var grid;
 
-var nRows = 20;
-var nCols = 20;
+var nRows = 30;
+var nCols = 30;
 var w = 10;
 var DEBUG = false;
 
@@ -14,6 +14,12 @@ function setup() {
   frameRate(2);
   canvas = createCanvas(nRows * w + 1, nCols * w + 1);
   canvas.parent('canvas-container');
+
+  canvas.mousePressed(() => {
+    var x = floor(mouseX / w);
+    var y = floor(mouseY / w);
+    grid.cell(x, y).alive = true;
+  });
 
   runBtn = select('#run');
   runBtn.mousePressed(() => {
@@ -29,11 +35,6 @@ function setup() {
   });
 
   grid = new Grid(nRows, nCols);
-  grid.cell(0, 0).alive = true;
-  grid.cell(0, 2).alive = true;
-  grid.cell(2, 1).alive = true;
-  grid.cell(2, 3).alive = true;
-  grid.cell(2, 4).alive = true;
 }
 
 function draw() {
