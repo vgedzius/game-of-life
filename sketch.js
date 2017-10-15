@@ -1,8 +1,8 @@
 var canvas;
 var grid;
 
-var nRows = 30;
-var nCols = 30;
+var nRows = 80;
+var nCols = 50;
 var w = 10;
 var DEBUG = false;
 
@@ -12,23 +12,29 @@ var running = false;
 
 function setup() {
   frameRate(2);
+  if (!running) {
+    noLoop();
+  }
+
   canvas = createCanvas(nRows * w + 1, nCols * w + 1);
   canvas.parent('canvas-container');
-
   canvas.mousePressed(() => {
-    var x = floor(mouseX / w);
-    var y = floor(mouseY / w);
-    grid.cell(x, y).alive = true;
+    if (!running) {
+      var x = floor(mouseX / w);
+      var y = floor(mouseY / w);
+      grid.cell(x, y).alive = true;
+      redraw();
+    }
   });
 
   runBtn = select('#run');
   runBtn.mousePressed(() => {
     if (running) {
-      // noLoop();
+      noLoop();
       running = false;
       runBtn.html('Run');
     } else {
-      // loop();
+      loop();
       running = true;
       runBtn.html('Stop');
     }
@@ -39,8 +45,8 @@ function setup() {
 
 function draw() {
   background(255);
-  grid.show();
   if (running) {
     grid.update();
   }
+  grid.show();
 }
