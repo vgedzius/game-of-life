@@ -22,7 +22,7 @@ function setup() {
     if (!running) {
       var x = floor(mouseX / w);
       var y = floor(mouseY / w);
-      grid.cell(x, y).alive = true;
+      grid.cell(x, y).alive = !grid.cell(x, y).alive;
       redraw();
     }
   });
