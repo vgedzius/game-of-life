@@ -44,9 +44,10 @@ Cell.prototype.show = function () {
   if (this.alive) {
     fill(0);
   } else {
-    noFill();
+    fill(255, 255, 255, 25);
   }
-  stroke(0);
+  //stroke(255);
+  noStroke();
   rect(this.x * w, this.y * w, w, w);
 
   if (DEBUG) {

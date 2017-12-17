@@ -1,9 +1,9 @@
 var canvas;
 var grid;
 
-var nRows = 80;
-var nCols = 50;
-var w = 10;
+var nRows = 90;
+var nCols = 60;
+var w = 8;
 var DEBUG = false;
 
 
@@ -29,9 +29,8 @@ function setup() {
 }
 
 function draw() {
-  background(255);
+  grid.show();
   if (running) {
     grid.update();
   }
-  grid.show();
 }
