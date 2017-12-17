@@ -6,12 +6,10 @@ var nCols = 50;
 var w = 10;
 var DEBUG = false;
 
-var runBtn;
 
-var running = false;
+var running = true;
 
 function setup() {
-  frameRate(6);
   if (!running) {
     noLoop();
   }
@@ -24,19 +22,6 @@ function setup() {
       var y = floor(mouseY / w);
       grid.cell(x, y).alive = !grid.cell(x, y).alive;
       redraw();
-    }
-  });
-
-  runBtn = select('#run');
-  runBtn.mousePressed(() => {
-    if (running) {
-      noLoop();
-      running = false;
-      runBtn.html('Run');
-    } else {
-      loop();
-      running = true;
-      runBtn.html('Stop');
     }
   });
 

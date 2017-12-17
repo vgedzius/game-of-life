@@ -3,7 +3,7 @@ function Cell(x, y) {
   this.y = y;
   
 
-  this.alive = false;
+  this.alive = floor(random(2));
 }
 
 Cell.prototype.update = function () {
@@ -27,7 +27,10 @@ Cell.prototype.aliveNeigbours = function () {
   var n = 0;
   for (var i = -1; i <= 1; i++) {
     for (var j = -1; j <= 1; j++) {
-      var cell = grid.cell(this.x + i, this.y + j);
+      var x = (this.x + i + nRows) % nRows;
+      var y = (this.y + j + nCols) % nCols;
+
+      var cell = grid.cell(x, y);
       if (cell && cell.alive) {
         n++;
       }
