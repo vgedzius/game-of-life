@@ -42,8 +42,11 @@ Cell.prototype.aliveNeigbours = function () {
 
 Cell.prototype.show = function () {
   if (this.alive) {
-    fill(0);
+    var h = frameCount % 360;
+    colorMode(HSB);
+    fill(h, 255, 255);
   } else {
+    colorMode(RGB);
     fill(255, 255, 255, 25);
   }
   //stroke(255);
